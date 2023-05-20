@@ -2,7 +2,9 @@ from model import Todo
 import motor.motor_asyncio
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+# client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
+
 database = client.TodoList
 collection = database.todo
 

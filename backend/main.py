@@ -7,7 +7,8 @@ from database import *
 from model import Todo
 
 
-client = AsyncIOMotorClient('mongodb://localhost:21017')
+# client = AsyncIOMotorClient('mongodb://localhost:21017')
+client = AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
 origins = ["https://localhost:300"]
 
