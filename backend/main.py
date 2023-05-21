@@ -8,8 +8,8 @@ from database import *
 # from .models.user_models import User, UserRegisterRequestBody
 from models.user_models import User
 
-client = AsyncIOMotorClient('mongodb://localhost:21017')
-# client = AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
+# client = AsyncIOMotorClient('mongodb://localhost:21017')
+client = AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
 origins = ["https://localhost:300"]
 
