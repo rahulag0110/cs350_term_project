@@ -11,7 +11,7 @@ from models.user_models import User
 # client = AsyncIOMotorClient('mongodb://localhost:21017')
 client = AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
-origins = ["https://localhost:300"]
+origins = ["https://localhost:3000"]
 
 app = FastAPI()
 
@@ -42,7 +42,7 @@ async def user_login(email, password):
     response = await login_user(email, password)
     if response:
         return response
-    raise HTTPException(400, "Something went wrong")
+    raise HTTPException(400, "Email or password is incorrect")
 
 
 @app.delete("/user/deregister/")
@@ -56,6 +56,22 @@ async def user_deregister(user_id):
 @app.post('/event/create')
 async def event_create(event: Event):
     response = await create_event(event.dict())
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong")
+
+
+@app.delete("/event/deregister/")
+async def event_delete(event_id):
+    response = await delete_event(event_id)
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong")
+
+
+@app.get("/event/all")
+async def get_all_events():
+    response = await fetch_all_events()
     if response:
         return response
     raise HTTPException(400, "Something went wrong")
