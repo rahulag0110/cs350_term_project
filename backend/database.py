@@ -4,8 +4,8 @@ from models.user_models import User
 from models.event_models import Event
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
-# client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
+# client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
 
 def UserHelper(User) -> dict:
