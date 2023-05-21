@@ -16,4 +16,3 @@
 6. Go to `backend` folder
 7. `uvicorn main:app --reload`
 8. Paste this into browser: `http://127.0.0.1:8000/docs`
-Hello again
