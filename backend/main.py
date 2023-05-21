@@ -11,7 +11,7 @@ from models.user_models import User
 # client = AsyncIOMotorClient('mongodb://localhost:21017')
 client = AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
-origins = ["https://localhost:3000"]
+origins = ["*"]
 
 app = FastAPI()
 
