@@ -2,6 +2,7 @@ import motor.motor_asyncio
 from bson.objectid import ObjectId
 from models.user_models import User
 from models.event_models import Event
+from models.reward_box_models import RewardBox
 
 
 # client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
@@ -26,9 +27,19 @@ def EventHelper(Event) -> dict:
         "reward_box_id": str(Event["reward_box_id"])
     }
 
+def RewardBoxHelper(RewardBox) -> dict:
+    return{
+        "_id": str(RewardBox["_id"]),
+        "event_id": str(RewardBox["event_id"]),
+        "reward_id": str(RewardBox["reward_id"]),
+        "reward": str(RewardBox["reward"]),
+        "claim_info": str(RewardBox["claim_info"])
+    }
+
 database = client.ProjectDatabase
 collection_users = database.Users
 collection_events = database.Events
+collection_reward_boxes = database.RewardBoxes
 
 
 async def register_user(user: User):
@@ -55,3 +66,21 @@ async def create_event(event: Event):
     if result:
         registered_event = await collection_events.find_one(event)
         return EventHelper(registered_event)['_id']
+    
+async def delete_event(event_id: str):
+    document = event_id
+    result = await collection_events.delete_one({"_id": ObjectId(event_id)})
+    return document
+
+
+async def create_reward_box(reward_box: RewardBox):
+    result = await collection_reward_boxes.insert_one(reward_box)
+    if result:
+        registered_box = await collection_reward_boxes.find_one(reward_box)
+        return RewardBoxHelper(registered_box)['_id']
+
+async def fetch_all_events():
+    events = []
+    async for event in collection_events.find():
+        events.append(EventHelper(event))
+    return events
