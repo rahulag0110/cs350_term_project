@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState([{}])
 
     const loginHandler = () => {
-        axios.get('http://127.0.0.1:8000/user/login', {'email': email, 'password': password})
+        axios.post('http://127.0.0.1:8000/user/login', {'email': email, 'password': password})
         .then(res => console.log(res))
     }
 

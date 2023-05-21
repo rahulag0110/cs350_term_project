@@ -4,7 +4,7 @@ from controllers.c_event import *
 
 
 router = APIRouter(prefix="/event", tags=['Event'])
-
+                
 
 @router.post('/create')
 async def event_create(event: Event):
