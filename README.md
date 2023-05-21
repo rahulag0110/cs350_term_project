@@ -2,7 +2,7 @@
 ## Team 15 (Ben, Fuad, Jun, Rahul, Yoonsu)
 >Requirements for Frontend - node (version 19.8.1) npm (version 9.5.1)
 
-###Backend server instructions
+### Backend server instructions
 1. `git clone https://github.com/rahulag0110/cs350_term_project.git` 
 2. `python -m venv new_env`
 3. Go to `new_env\Scripts`
