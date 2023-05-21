@@ -1,39 +1,40 @@
-from model import Todo
 import motor.motor_asyncio
+from bson.objectid import ObjectId
 
 
-# client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
-
-database = client.TodoList
-collection = database.todo
+client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+# client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
 
 
-async def fetch_one_todo(title):
-    document = await collection.find_one({"title":title})
+def UserHelper(User) -> dict:
+    return {
+        "_id": str(User["_id"]),
+        "name": str(User["name"]),
+        "email": str(User["email"]),
+        "password": str(User["password"])
+    }
+
+
+database = client.ProjectDatabase
+collection_users = database.Users
+collection_events = database.Events
+
+
+async def register_user(user):
+    document = user
+    result = await collection_users.insert_one(document)
     return document
 
 
-async def fetch_all_todos():
-    todos = []
-    cursor = collection.find({})
-    async for document in cursor:
-        todos.append(Todo(**document))
-    return todos
+async def login_user(email):
+    result = await collection_users.find_one({"email": email})
+    if result:
+        return UserHelper(result)["_id"]
+
+    
 
 
-async def create_todo(todo):
-    document = todo
-    result = await collection.insert_one(document)
+async def deregister_user(user_id: ObjectId):
+    document = user_id
+    result = await collection_users.delete_one({"_id": ObjectId(user_id)})
     return document
-
-
-async def update_todo(title, desc):
-    await collection.update_one({"title": title}, {"$set":{"description": desc}})
-    document = await collection.find_one({"title": title})
-    return document
-
-
-async def remove_todo(title):
-    await collection.delete_one({"title":title})
-    return True
