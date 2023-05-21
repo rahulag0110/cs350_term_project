@@ -1,4 +1,4 @@
-from models.user_models import User
+from models.user_models import User, UserLogin
 from database import collection_users
 from bson.objectid import ObjectId
 
@@ -12,6 +12,8 @@ def UserHelper(User) -> dict:
     }
 
 
+
+
 async def register_user(user: User):
     result = await collection_users.insert_one(user)
     if result:
@@ -19,10 +21,14 @@ async def register_user(user: User):
         return UserHelper(registered_user)['_id']
     
 
-async def login_user(email, password):
-    result = await collection_users.find_one({"email": email, "password": password})
+async def login_user(login_cred: UserLogin):
+    result = await collection_users.find_one(login_cred)
     if result:
-        return UserHelper(result)["_id"]
+        response_data = {"status": "SUCCESS", "user_id": UserHelper(result)["_id"]}
+    else:
+        response_data = {"status": "FAIL", "msg": "User credentials are incorrect"}
+    return response_data
+        
     
 
 async def deregister_user(user_id: ObjectId):
