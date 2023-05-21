@@ -35,3 +35,20 @@ async def user_register(user: User):
     if response:
         return response
     raise HTTPException(400, "Something went wrong")
+
+
+@app.get("/user/login")
+async def user_login(email):
+    response = await login_user(email)
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong")
+
+
+
+@app.delete("/user/deregister/{user_id}")
+async def user_deregister(user_id):
+    response = await deregister_user(user_id)
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong")

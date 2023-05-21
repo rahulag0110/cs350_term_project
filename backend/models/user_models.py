@@ -1,8 +1,8 @@
 from pydantic import BaseModel
-
+from bson.objectid import ObjectId
 
 class User(BaseModel):
-    id: int
+    _id: ObjectId
     name: str
     email: str
     password: str
