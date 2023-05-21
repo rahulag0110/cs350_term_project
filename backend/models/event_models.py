@@ -1,8 +1,8 @@
 from pydantic import BaseModel
-
+from bson.objectid import ObjectId
 
 class Event(BaseModel):
-    id: int
+    _id: ObjectId
     host_id: int
     name: str
     open_date: str
