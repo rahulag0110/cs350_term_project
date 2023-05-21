@@ -4,7 +4,8 @@ from routers import r_user, r_event
 
 
 
-origins = ["https://localhost:3000"]
+origins = ["*"]
+
 
 app = FastAPI(
     title="CS350_Team15_API",
