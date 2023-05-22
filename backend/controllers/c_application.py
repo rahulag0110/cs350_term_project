@@ -1,6 +1,8 @@
 from models.application_models import Application
 from database import collection_applications
 from bson.objectid import ObjectId
+from helpers import *
+
 
 def ApplicationHelper(Application) -> dict:
     return {
@@ -11,6 +13,7 @@ def ApplicationHelper(Application) -> dict:
         "image": str(Application["image"]),
         "status": bool(Application["status"])
     }
+
 
 async def apply_event(application: Application):
     result = await collection_applications.insert_one(application)
