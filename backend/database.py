@@ -1,7 +1,9 @@
 import motor.motor_asyncio
 
+
 # client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
 client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://simple:simple@cluster0.duulzju.mongodb.net/")
+
 
 def RewardBoxHelper(RewardBox) -> dict:
     return{
@@ -12,8 +14,9 @@ def RewardBoxHelper(RewardBox) -> dict:
         "claim_info": str(RewardBox["claim_info"])
     }
 
+
 database = client.ProjectDatabase
 collection_users = database.Users
 collection_events = database.Events
-collection_reward_boxes = database.RewardBoxes
+collection_prizes = database.oxes
 collection_applications = database.Applications
