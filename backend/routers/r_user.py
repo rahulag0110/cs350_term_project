@@ -9,9 +9,7 @@ router = APIRouter(prefix="/user", tags=['User'])
 @router.post("/register", summary="Register user")
 async def user_register(user: User):
     response = await register(user.dict())
-    if response:
-        return response
-    raise HTTPException(400, "Something went wrong")
+    return response
 
 
 @router.post("/login", summary="Login")
