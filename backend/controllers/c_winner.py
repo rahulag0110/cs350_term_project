@@ -40,6 +40,9 @@ def TempPrizeHelper(Prize) -> dict:
 
 
 async def select_winners(event_id: str):
+    async for winner in collection_winners.find():
+        if event_id == WinnerHelper(winner)["event_id"]:
+            return "WINNERS ALREADY SELECTED"
     applications = []
     async for application in collection_applications.find({"event_id": event_id, "status": True}, {"participant_id": 1, "event_id": 1}):
         applications.append(TempWinnerHelper(application))
