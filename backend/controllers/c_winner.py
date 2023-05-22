@@ -1,42 +1,6 @@
-from models.winner_models import Winner
-from models.application_models import Application
 from database import collection_applications, collection_prizes, collection_winners
-from bson.objectid import ObjectId
 import random
-
-
-def WinnerHelper(Winner) -> dict:
-    return {
-        "_id": str(Winner["_id"]),
-        "participant_id": str(Winner["participant_id"]),
-        "event_id": str(Winner["event_id"]),
-        "rank": int(Winner["rank"]),
-        "prize_name": str(Winner["prize_name"]),
-        "claim_info": str(Winner["claim_info"]),
-        "status": bool(Winner["status"])
-    }
-
-def TempWinnerHelper(Winner) -> dict:
-    return {
-        "_id": str(Winner["_id"]),
-        "participant_id": str(Winner["participant_id"]),
-        "event_id": str(Winner["event_id"]),
-    }
-
-def PrizeHelper(Prize) -> dict:
-    return{
-        "_id": str(Prize["_id"]),
-        "event_id": str(Prize["event_id"]),
-        "prize_rank": int(Prize["prize_rank"]),
-        "prize_name": str(Prize["prize_name"]),
-        "claim_info": str(Prize["claim_info"])
-    }
-
-def TempPrizeHelper(Prize) -> dict:
-    return{
-        "prize_name": str(Prize["prize_name"]),
-        "claim_info": str(Prize["claim_info"])
-    }
+from helpers import *
 
 
 async def select_winners(event_id: str):
