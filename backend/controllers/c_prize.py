@@ -13,21 +13,26 @@ def PrizeHelper(Prize) -> dict:
     }
 
 
-async def event_add_prize(prize: Prize):
+async def add(prize: Prize):
     result = await collection_prizes.insert_one(prize)
     if result:
         added_prize = await collection_prizes.find_one(prize)
-        return PrizeHelper(added_prize)['_id']
+        added_prize_id = PrizeHelper(added_prize)["_id"]
+        response_data = {"status": "SUCCESS", "prize_id": added_prize_id}
+    else:
+        response_data = {"status": "FAIL", "msg": "Something went wrong"}
+    return response_data
     
 
-async def event_delete_prize(prize_id: str):
-    document = prize_id
-    result = await collection_prizes.delete_one({"_id": ObjectId(prize_id)})
-    return document
+async def delete(prize_id: str):
+    await collection_prizes.delete_one({"_id": ObjectId(prize_id)})
+    response_data = {"status": "SUCCESS"}
+    return response_data
 
 
-async def event_show_all_prizes(event_id: str):
+async def get_all(event_id: str):
     prizes = []
-    async for prize in collection_prizes.find({"event_id": ObjectId(event_id)}):
+    async for prize in collection_prizes.find({"event_id": event_id}):
         prizes.append(PrizeHelper(prize))
-    return prizes
+    response_data = {"status": "SUCCESS", "prizes": prizes}
+    return response_data

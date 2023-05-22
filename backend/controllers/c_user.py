@@ -12,7 +12,7 @@ def UserHelper(User) -> dict:
     }
 
 
-async def register_user(user: User):
+async def register(user: User):
     result = await collection_users.insert_one(user)
     if result:
         registered_user = await collection_users.find_one(user)
@@ -23,7 +23,7 @@ async def register_user(user: User):
     return response_data
     
 
-async def login_user(login_cred: UserLogin):
+async def login(login_cred: UserLogin):
     result = await collection_users.find_one(login_cred)
     if result:
         response_data = {"status": "SUCCESS", "user_id": UserHelper(result)["_id"]}
@@ -32,10 +32,7 @@ async def login_user(login_cred: UserLogin):
     return response_data
         
 
-async def deregister_user(user_id: ObjectId):
-    result = await collection_users.delete_one({"_id": ObjectId(user_id)})
-    if result:
-        response_data = {"status": "SUCCESS"}
-    else:
-        response_data = {"status": "FAIL"}
+async def deregister(user_id: ObjectId):
+    await collection_users.delete_one({"_id": ObjectId(user_id)})
+    response_data = {"status": "SUCCESS"}
     return response_data
