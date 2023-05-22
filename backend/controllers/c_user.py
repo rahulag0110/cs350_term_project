@@ -16,7 +16,11 @@ async def register_user(user: User):
     result = await collection_users.insert_one(user)
     if result:
         registered_user = await collection_users.find_one(user)
-        return UserHelper(registered_user)['_id']
+        registered_user_id = UserHelper(registered_user)['_id']
+        response_data = {"status": "SUCCESS", "user_id": registered_user_id}
+    else:
+        response_data = {"status": "FAIL", "msg": "Something went wrong"}
+    return response_data
     
 
 async def login_user(login_cred: UserLogin):
@@ -29,6 +33,9 @@ async def login_user(login_cred: UserLogin):
         
 
 async def deregister_user(user_id: ObjectId):
-    document = user_id
     result = await collection_users.delete_one({"_id": ObjectId(user_id)})
-    return document
+    if result:
+        response_data = {"status": "SUCCESS"}
+    else:
+        response_data = {"status": "FAIL"}
+    return response_data
