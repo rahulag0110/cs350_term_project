@@ -2,8 +2,8 @@ from pydantic import BaseModel
 
 
 class Winner(BaseModel):
-    participant_id: int
-    event_id: int
+    participant_id: str
+    event_id: str
     rank: int
     reward: str
     claim_info: str
