@@ -9,26 +9,30 @@ def EventHelper(Event) -> dict:
         "host_id": str(Event["host_id"]),
         "name": str(Event["name"]),
         "open_date": str(Event["open_date"]),
-        "close_date": str(Event["close_date"]), 
-        "reward_box_id": str(Event["reward_box_id"])
+        "close_date": str(Event["close_date"])
     }
 
 
-async def create_event(event: Event):
+async def create(event: Event):
     result = await collection_events.insert_one(event)
     if result:
         registered_event = await collection_events.find_one(event)
-        return EventHelper(registered_event)['_id']
-    
-    
-async def delete_event(event_id: str):
-    document = event_id
-    result = await collection_events.delete_one({"_id": ObjectId(event_id)})
-    return document
+        registered_event_id = EventHelper(registered_event)["_id"]
+        response_data = {"status": "SUCCESS", "user_id": registered_event_id}
+    else:
+        response_data = {"status": "FAIL", "msg": "Something went wrong"}
+    return response_data
+        
+
+async def delete(event_id: str):
+    await collection_events.delete_one({"_id": ObjectId(event_id)})
+    response_data = {"status": "SUCCESS"}
+    return response_data
 
 
-async def fetch_all_events():
+async def fetch_all():
     events = []
     async for event in collection_events.find():
         events.append(EventHelper(event))
-    return events
+    response_data = {"status": "SUCCESS", "events": events}
+    return response_data
