@@ -16,3 +16,4 @@ database = client.ProjectDatabase
 collection_users = database.Users
 collection_events = database.Events
 collection_reward_boxes = database.RewardBoxes
+collection_applications = database.Applications
