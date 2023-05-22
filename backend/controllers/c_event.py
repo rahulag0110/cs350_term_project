@@ -1,17 +1,7 @@
 from models.event_models import Event
 from database import collection_events
 from bson.objectid import ObjectId
-
-
-def EventHelper(Event) -> dict:
-    return{
-        "_id": str(Event["_id"]),
-        "host_id": str(Event["host_id"]),
-        "name": str(Event["name"]),
-        "open_date": str(Event["open_date"]),
-        "close_date": str(Event["close_date"])
-    }
-
+from helpers import *
 
 async def create(event: Event):
     result = await collection_events.insert_one(event)
@@ -36,3 +26,7 @@ async def fetch_all():
         events.append(EventHelper(event))
     response_data = {"status": "SUCCESS", "events": events}
     return response_data
+
+
+# async def events(user_id: ObjectId):
+#     await collection_events
