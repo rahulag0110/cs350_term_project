@@ -9,7 +9,7 @@ def ApplicationHelper(Application) -> dict:
         "event_id": str(Application["event_id"]),
         "link": str(Application["link"]),
         "image": str(Application["image"]),
-        "status": str(Application["status"])
+        "status": bool(Application["status"])
     }
 
 async def apply_event(application: Application):
