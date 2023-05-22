@@ -13,23 +13,19 @@ def EventHelper(Event) -> dict:
         "reward_box_id": str(Event["reward_box_id"])
     }
 
+
 async def create_event(event: Event):
     result = await collection_events.insert_one(event)
     if result:
         registered_event = await collection_events.find_one(event)
         return EventHelper(registered_event)['_id']
     
+    
 async def delete_event(event_id: str):
     document = event_id
     result = await collection_events.delete_one({"_id": ObjectId(event_id)})
     return document
 
-
-# async def create_reward_box(reward_box: RewardBox):
-#     result = await collection_reward_boxes.insert_one(reward_box)
-#     if result:
-#         registered_box = await collection_reward_boxes.find_one(reward_box)
-#         return RewardBoxHelper(registered_box)['_id']
 
 async def fetch_all_events():
     events = []
