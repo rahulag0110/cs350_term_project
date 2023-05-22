@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from helpers import *
 
 
-async def create_event(event: Event):
+async def create(event: Event):
 
     result = await collection_events.insert_one(event)
     if result:
