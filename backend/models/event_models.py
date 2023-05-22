@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 
 
 class Event(BaseModel):
-    _id: str
+    _id: ObjectId
     host_id: str
     name: str
     open_date: str

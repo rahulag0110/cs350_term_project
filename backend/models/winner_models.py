@@ -1,8 +1,8 @@
 from pydantic import BaseModel
-
+from bson.objectid import ObjectId
 
 class Winner(BaseModel):
-    participant_id: str
+    participant_id: ObjectId
     event_id: str
     rank: int
     reward: str

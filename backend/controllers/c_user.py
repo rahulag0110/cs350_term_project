@@ -1,15 +1,7 @@
 from models.user_models import User, UserLogin
-from database import collection_users
+from database import collection_users, collection_events
 from bson.objectid import ObjectId
-
-
-def UserHelper(User) -> dict:
-    return {
-        "_id": str(User["_id"]),
-        "name": str(User["name"]),
-        "email": str(User["email"]),
-        "password": str(User["password"])
-    }
+from helpers import *
 
 
 async def register(user: User):
@@ -35,4 +27,12 @@ async def login(login_cred: UserLogin):
 async def deregister(user_id: ObjectId):
     await collection_users.delete_one({"_id": ObjectId(user_id)})
     response_data = {"status": "SUCCESS"}
+    return response_data
+
+
+async def events(host_id: str):
+    user_events = []
+    async for user_event in collection_events.find({"host_id": host_id}):
+        user_events.append(EventHelper(user_event))
+    response_data = {"status": "SUCCESS", "events": user_events}
     return response_data

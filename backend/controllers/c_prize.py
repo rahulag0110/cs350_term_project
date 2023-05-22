@@ -1,16 +1,7 @@
 from models.prize_models import Prize
 from database import collection_prizes
 from bson.objectid import ObjectId
-
-
-def PrizeHelper(Prize) -> dict:
-    return{
-        "_id": str(Prize["_id"]),
-        "event_id": str(Prize["event_id"]),
-        "prize_rank": int(Prize["prize_rank"]),
-        "prize_name": str(Prize["prize_name"]),
-        "claim_info": str(Prize["claim_info"])
-    }
+from helpers import * 
 
 
 async def add(prize: Prize):

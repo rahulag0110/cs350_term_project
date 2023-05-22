@@ -25,7 +25,7 @@ app.include_router(r_user.router)
 app.include_router(r_event.router)
 app.include_router(r_prize.router)
 app.include_router(r_application.router)
-app.include_router(r_winner.router)
+# app.include_router(r_winner.router)
 
 
 

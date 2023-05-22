@@ -10,8 +10,3 @@ class User(BaseModel):
 class UserLogin(BaseModel):
     email: str
     password: str
-
-class UserRegisterRequestBody(BaseModel):
-    name: str
-    email: str
-    password: str
