@@ -26,7 +26,9 @@ async def user_login(login_cred: UserLogin):
     # if response["status"] == "FAIL":
     if response["status"] == "SUCCESS":
         return response["user_id"]
-    raise HTTPException(400, detail=response['msg'])
+    else:
+        return response["msg"]
+    # raise HTTPException(400, detail=response['msg'])
     # raise CommonException(status_code=400, detail=response['msg'])
 
 
