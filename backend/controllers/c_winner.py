@@ -64,3 +64,4 @@ async def select_winners(event_id: str):
             t1.update(t2)
             result = await collection_winners.insert_one(WinnerHelper(t1))
     return winners
+
