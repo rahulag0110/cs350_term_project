@@ -11,7 +11,7 @@ async def event_apply(application: Application):
         return response
     raise HTTPException(400, "Something went wrong")
 
-@router.delete("/delete application")
+@router.delete("/delete_application")
 async def delete_application(application_id):
     response = await delete_application(application_id)
     if response:

@@ -9,7 +9,7 @@ def ApplicationHelper(Application) -> dict:
         "event_id": str(Application["event_id"]),
         "link": str(Application["link"]),
         "image": str(Application["image"]),
-        "status": bool(Application["status"])
+        "status": str(Application["status"])
     }
 
 async def apply_event(application: Application):
@@ -20,5 +20,5 @@ async def apply_event(application: Application):
     
 async def delete_application(application_id: str):
     document = application_id
-    result = await collection_applications.delete_one({"_id": ObjectId(application_id)})
+    result = await collection_applications.delete({"_id": ObjectId(application_id)})
     return document

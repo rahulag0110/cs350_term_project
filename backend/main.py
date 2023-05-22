@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import r_user, r_event, r_prize
+from routers import r_user, r_event, r_prize, r_application
 
 
 origins = ["*"]
@@ -24,6 +24,7 @@ app.add_middleware(
 app.include_router(r_user.router)
 app.include_router(r_event.router)
 app.include_router(r_prize.router)
+app.include_router(r_application.router)
 
 
 @app.get("/")
