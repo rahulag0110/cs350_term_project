@@ -9,3 +9,4 @@ collection_users = database.Users
 collection_events = database.Events
 collection_prizes = database.Prizes
 collection_winners = database.Winners
+collection_applications = database.Applications
