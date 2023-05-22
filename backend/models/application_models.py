@@ -8,4 +8,4 @@ class Application(BaseModel):
     event_id: str
     link: str
     image: str
-    status: str
+    status: bool

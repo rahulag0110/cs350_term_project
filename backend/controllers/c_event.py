@@ -3,7 +3,19 @@ from database import collection_events
 from bson.objectid import ObjectId
 from helpers import *
 
-async def create(event: Event):
+
+def EventHelper(Event) -> dict:
+    return{
+        "_id": str(Event["_id"]),
+        "host_id": str(Event["host_id"]),
+        "name": str(Event["name"]),
+        "open_date": str(Event["open_date"]),
+        "close_date": str(Event["close_date"])
+    }
+
+
+async def create_event(event: Event):
+
     result = await collection_events.insert_one(event)
     if result:
         registered_event = await collection_events.find_one(event)
