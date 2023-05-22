@@ -1,21 +1,27 @@
 import './App.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
+
 import Register from './Components/Register';
-import Login from './Components/Login'
+import Login from './Components/Login';
+import Home from './Components/Home';
+import Event from './Components/Event';
+
+
 
 
 function App() {
+
   return (
     <>
-    <div>Hello!</div>
-
-    <Register />
-    <Login />
-
-
+      <Routes>
+        <Route exact path='/' element={<Home />}/>
+        <Route exact path='/login' element={<Login />}/>
+        <Route exact path='/register' element={<Register />}/>
+        <Route exact path='/events' element={<Event />}/>
+      </Routes>
     </>
   );
 }
