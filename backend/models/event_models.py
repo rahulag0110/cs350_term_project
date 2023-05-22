@@ -8,4 +8,3 @@ class Event(BaseModel):
     open_date: str
     close_date: str 
     # Todo change this to date
-    reward_box_id: int
