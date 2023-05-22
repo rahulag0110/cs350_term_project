@@ -6,17 +6,13 @@ from controllers.c_prize import *
 router = APIRouter(prefix="/prize", tags=['Prize'])
 
 
-@router.post("/add")
+@router.post("/add", summary="Add a prize")
 async def add_prize(prize: Prize):
-    response = await event_add_prize(prize.dict())
-    if response:
-        return response
-    raise HTTPException(400, "Something went wrong")
+    response = await add(prize.dict())
+    return response
 
 
-@router.delete("/delete")
+@router.delete("/delete", summary="Delete a prize")
 async def delete_prize(prize_id):
-    response = await event_delete_prize(prize_id)
-    if response:
-        return response
-    raise HTTPException(400, "Something went wrong")
+    response = await delete(prize_id)
+    return response
