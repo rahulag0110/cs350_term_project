@@ -12,8 +12,6 @@ def UserHelper(User) -> dict:
     }
 
 
-
-
 async def register_user(user: User):
     result = await collection_users.insert_one(user)
     if result:
@@ -29,10 +27,8 @@ async def login_user(login_cred: UserLogin):
         response_data = {"status": "FAIL", "msg": "User credentials are incorrect"}
     return response_data
         
-    
 
 async def deregister_user(user_id: ObjectId):
     document = user_id
     result = await collection_users.delete_one({"_id": ObjectId(user_id)})
     return document
-
