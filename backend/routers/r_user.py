@@ -6,7 +6,6 @@ from controllers.c_user import *
 router = APIRouter(prefix="/user", tags=['User'])
 
 
-
 @router.post("/register", summary="Register user")
 async def user_register(user: User):
     response = await register_user(user.dict())
@@ -20,6 +19,7 @@ class CommonException(Exception):
         self.status_code = status_code
         self.detail = detail
 
+
 @router.post("/login")
 async def user_login(login_cred: UserLogin):
     response = await login_user(login_cred.dict())
@@ -30,9 +30,6 @@ async def user_login(login_cred: UserLogin):
         return response["msg"]
     # raise HTTPException(400, detail=response['msg'])
     # raise CommonException(status_code=400, detail=response['msg'])
-
-
-
 
 
 @router.delete("/deregister")

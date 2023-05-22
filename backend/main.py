@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers import r_user, r_event, r_prize
 
 
-
 origins = ["*"]
 
 
@@ -12,6 +11,7 @@ app = FastAPI(
     docs_url="/docs"
 )
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -19,6 +19,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
 
 app.include_router(r_user.router)
 app.include_router(r_event.router)
