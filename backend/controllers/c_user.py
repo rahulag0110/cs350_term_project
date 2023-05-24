@@ -1,17 +1,21 @@
-from models.user_models import User, UserLogin
+from models.user_models import *
 from database import collection_users, collection_events
 from bson.objectid import ObjectId
 from helpers import *
 
 
-async def register(user: User):
-    result = await collection_users.insert_one(user)
-    if result:
-        registered_user = await collection_users.find_one(user)
-        registered_user_id = UserHelper(registered_user)['_id']
-        response_data = {"status": "SUCCESS", "user_id": registered_user_id}
+async def register(user: UserRegister):
+    user_in_db = await collection_users.find_one({"email": UserRegisterHelper(user)["email"]})
+    if user_in_db:
+        response_data = {"status": "FAIL", "msg": "User already registered"}
     else:
-        response_data = {"status": "FAIL", "msg": "Something went wrong"}
+        result = await collection_users.insert_one(user)
+        if result:
+            registered_user = await collection_users.find_one(user)
+            registered_user_id = UserHelper(registered_user)['_id']
+            response_data = {"status": "SUCCESS", "user_id": registered_user_id}
+        else:
+            response_data = {"status": "FAIL", "msg": "Something went wrong"}
     return response_data
     
 
