@@ -1,7 +1,7 @@
 from models.application_models import Application
 from database import collection_applications
 from bson.objectid import ObjectId
-from helpers import *
+from helpers.application_helpers import *
 
 
 async def apply_event(application: Application):
