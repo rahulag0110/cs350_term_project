@@ -7,6 +7,14 @@ def UserHelper(User) -> dict:
     }
 
 
+def UserRegisterHelper(UserRegister) -> dict:
+    return{
+        "name": str(UserRegister["name"]),
+        "email": str(UserRegister["email"]),
+        "password": str(UserRegister["password"])
+    }
+
+
 def PrizeHelper(Prize) -> dict:
     return{
         "_id": str(Prize["_id"]),

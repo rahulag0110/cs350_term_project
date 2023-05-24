@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models.user_models import User, UserLogin
+from models.user_models import *
 from controllers.c_user import register, login, deregister, events
 
 
@@ -7,7 +7,7 @@ router = APIRouter(prefix="/user", tags=['User'])
 
 
 @router.post("/register", summary="Register user")
-async def user_register(user: User):
+async def user_register(user: UserRegister):
     response = await register(user.dict())
     return response
 
