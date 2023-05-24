@@ -1,7 +1,8 @@
 from models.user_models import *
 from database import collection_users, collection_events
 from bson.objectid import ObjectId
-from helpers import *
+from helpers.user_helpers import *
+from helpers.event_helpers import EventHelper
 
 
 async def register(user: UserRegister):

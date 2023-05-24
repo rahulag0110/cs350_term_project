@@ -1,7 +1,7 @@
 from models.event_models import Event
 from database import collection_events
 from bson.objectid import ObjectId
-from helpers import *
+from helpers.event_helpers import *
 
 
 async def create(event: Event):
