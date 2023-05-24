@@ -31,4 +31,4 @@ app.include_router(r_winner.router)
 
 @app.get("/")
 def read_root():
-    return {"Ping":"Pong"}
+    return {"Welcome":"Developers"}
