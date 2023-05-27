@@ -1,7 +1,7 @@
 from models.prize_models import Prize
 from database import collection_prizes
 from bson.objectid import ObjectId
-from helpers import * 
+from helpers.prize_helpers import * 
 
 
 async def add(prize: Prize):
