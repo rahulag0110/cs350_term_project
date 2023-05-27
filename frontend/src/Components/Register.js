@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 
 const Register = () => {
 
