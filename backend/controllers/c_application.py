@@ -19,3 +19,11 @@ async def deregister_application(application_id: ObjectId):
     await collection_applications.delete_one({"_id": ObjectId(application_id)})
     response_data = {"status": "SUCCESS"}
     return response_data
+
+
+async def event_applications(event_id: ObjectId):
+    applications = []
+    async for application in collection_applications.find({"event_id": event_id}):
+        applications.append(ApplicationHelper(application))
+    response_data = {"status": "SUCCESS", "applications": applications}
+    return response_data
