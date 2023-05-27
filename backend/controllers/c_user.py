@@ -1,17 +1,23 @@
-from models.user_models import User, UserLogin
-from database import collection_users, collection_events
+from models.user_models import *
+from database import collection_users, collection_events, collection_applications
 from bson.objectid import ObjectId
-from helpers import *
+from helpers.user_helpers import *
+from helpers.event_helpers import EventHelper
+from helpers.application_helpers import ApplicationHelper
 
 
-async def register(user: User):
-    result = await collection_users.insert_one(user)
-    if result:
-        registered_user = await collection_users.find_one(user)
-        registered_user_id = UserHelper(registered_user)['_id']
-        response_data = {"status": "SUCCESS", "user_id": registered_user_id}
+async def register(user: UserRegister):
+    user_in_db = await collection_users.find_one({"email": UserRegisterHelper(user)["email"]})
+    if user_in_db:
+        response_data = {"status": "FAIL", "msg": "User already registered"}
     else:
-        response_data = {"status": "FAIL", "msg": "Something went wrong"}
+        result = await collection_users.insert_one(user)
+        if result:
+            registered_user = await collection_users.find_one(user)
+            registered_user_id = UserHelper(registered_user)['_id']
+            response_data = {"status": "SUCCESS", "user_id": registered_user_id}
+        else:
+            response_data = {"status": "FAIL", "msg": "Something went wrong"}
     return response_data
     
 
@@ -30,9 +36,21 @@ async def deregister(user_id: ObjectId):
     return response_data
 
 
-async def events(host_id: str):
-    user_events = []
+async def created_events(host_id: str):
+    user_created_events = []
     async for user_event in collection_events.find({"host_id": host_id}):
-        user_events.append(EventHelper(user_event))
-    response_data = {"status": "SUCCESS", "events": user_events}
+        user_created_events.append(EventHelper(user_event))
+    response_data = {"status": "SUCCESS", "events": user_created_events}
+    return response_data
+
+
+async def participating_events(user_id: str):
+    user_participating_event_ids = []
+    async for user_application in collection_applications.find({"participant_id": user_id}):
+        user_participating_event_ids.append(ApplicationHelper(user_application)["event_id"])
+    events = []
+    for id in user_participating_event_ids:
+        async for event in collection_events.find({"_id": ObjectId(id)}):
+            events.append(EventHelper(event))
+    response_data = {"status": "SUCCESS", "events": events}
     return response_data

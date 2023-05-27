@@ -1,13 +1,13 @@
-from fastapi import APIRouter, HTTPException
-from models.user_models import User, UserLogin
-from controllers.c_user import register, login, deregister, events
+from fastapi import APIRouter
+from models.user_models import *
+from controllers.c_user import *
 
 
 router = APIRouter(prefix="/user", tags=['User'])
 
 
 @router.post("/register", summary="Register user")
-async def user_register(user: User):
+async def user_register(user: UserRegister):
     response = await register(user.dict())
     return response
 
@@ -23,7 +23,14 @@ async def user_deregister(user_id):
     response = await deregister(user_id)
     return response
 
-@router.get("/events", summary="Fetch events created by a user")
-async def user_events(user_id):
-    response = await events(user_id)
+
+@router.get("/created_events", summary="Fetch events created by a user")
+async def user_created_events(user_id):
+    response = await created_events(user_id)
+    return response
+
+
+@router.get("/participating_events", summary="Fetch all events a user participates in")
+async def user_participating_events(user_id):
+    response = await participating_events(user_id)
     return response
