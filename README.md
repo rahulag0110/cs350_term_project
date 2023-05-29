@@ -16,3 +16,9 @@
 6. Go to `backend` folder
 7. `uvicorn main:app --reload`
 8. Paste this into browser: `http://127.0.0.1:8000/docs`
+
+## Frontend server instructions
+
+1. change directory to 'frontend'
+2. Make sure the dependencies mentioned above are installed
+3. 'npm start' in the terminal should redirect to the browser (if not go to 'http://localhost:3000/')
