@@ -44,9 +44,9 @@ async def created_events(host_id: str):
     return response_data
 
 
-async def participating_events(user_id: str):
+async def participating_events(user_id: UserId):
     user_participating_event_ids = []
-    async for user_application in collection_applications.find({"participant_id": user_id}):
+    async for user_application in collection_applications.find({"participant_id": UserIdHelper(user_id)["user_id"]}):
         user_participating_event_ids.append(ApplicationHelper(user_application)["event_id"])
     events = []
     for id in user_participating_event_ids:

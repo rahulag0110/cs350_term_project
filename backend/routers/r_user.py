@@ -30,7 +30,7 @@ async def user_created_events(user_id):
     return response
 
 
-@router.get("/participating_events", summary="Fetch all events a user participates in")
-async def user_participating_events(user_id):
-    response = await participating_events(user_id)
+@router.post("/participating_events", summary="Fetch all events a user participates in")
+async def user_participating_events(user_id: UserId):
+    response = await participating_events(user_id.dict())
     return response
