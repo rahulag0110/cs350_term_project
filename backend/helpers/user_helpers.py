@@ -13,3 +13,9 @@ def UserRegisterHelper(UserRegister) -> dict:
         "email": str(UserRegister["email"]),
         "password": str(UserRegister["password"])
     }
+
+
+def UserIdHelper(UserId) -> dict:
+    return{
+        "user_id": str(UserId["user_id"])
+    }
