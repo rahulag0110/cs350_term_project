@@ -59,8 +59,9 @@
 
 
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
+import { UserContext } from "../Hooks/UserContext";
 
 const styles = {
     container: {
@@ -96,16 +97,21 @@ const styles = {
 };
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [status, setStatus] = useState("");
-    const [userId, setUserId] = useState("");
+
+    const {user, setUser} = useContext(UserContext);
+ 
+    const [email, setEmail] = useState([{}])
+    const [password, setPassword] = useState([{}])
+    const [status, setStatus] = useState()
+    const [userId, setUserId] = useState()
 
     const loginHandler = () => {
         axios.post('http://127.0.0.1:8000/user/login', {'email': email, 'password': password})
         .then(res => {
             setStatus(res.data['status']);
             setUserId(res.data['user_id']);
+            if ({status} == 'SUCCESS') {setUser(userId)};
+            // {status == 'SUCCESS' ? (setUserId(res.data['user_id'])) : (setUserId('No_user'))};
         })
     }
 
