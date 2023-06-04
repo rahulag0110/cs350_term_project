@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import HomeAfterLogin from "./HomeAfterLogin";
+import HomeBeforeLogin from "./HomeBeforeLogin";
 
 const styles = {
     container: {
@@ -32,13 +34,15 @@ const styles = {
 };
 
 const Home = () => {
+    const {user, setUser} = useContext(UserContext);
 
     return (
-        <div style={styles.container}>
-            <div style={styles.banner}>Welcome to EveryDraw!!!</div>
-            <Link to="/login" style={styles.link}>Login</Link>
-            <Link to="/events" style={styles.link}>Events</Link>
-        </div>
+        <>
+        <Link to="/login">Login</Link>
+        <p></p>
+        <Link to="/events">Events</Link>
+
+        </>
     )
 }
 
