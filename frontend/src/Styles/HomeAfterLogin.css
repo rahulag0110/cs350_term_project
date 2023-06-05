@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #d9d9d9;
+}
+
+.title {
+    color: #5B6C87;
+}
+
+.link {
+    margin-top: 20px;
+    color: #5B6C87;
+    text-decoration: underline;
+    cursor: pointer;
+}
