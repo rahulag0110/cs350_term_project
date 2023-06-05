@@ -36,9 +36,9 @@ async def deregister(user_id: ObjectId):
     return response_data
 
 
-async def created_events(host_id: str):
+async def created_events(host_id: UserId):
     user_created_events = []
-    async for user_event in collection_events.find({"host_id": host_id}):
+    async for user_event in collection_events.find({"host_id": UserIdHelper(host_id)["user_id"]}):
         user_created_events.append(EventHelper(user_event))
     response_data = {"status": "SUCCESS", "events": user_created_events}
     return response_data
