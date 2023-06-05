@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from models.application_models import Application
+from models.event_models import EventId
 from controllers.c_application import *
 
 
@@ -17,9 +18,9 @@ async def application_deregister(application_id):
     response = await deregister(application_id)
     return response
 
-@router.get("/event_applications", summary="Fetch all applications for an event")
-async def application_get_event_applications(event_id):
-    response = await get_event_applications(event_id)
+@router.post("/event_applications", summary="Fetch all applications for an event")
+async def application_get_event_applications(event_id: EventId):
+    response = await get_event_applications(event_id.dict())
     return response
 
 
