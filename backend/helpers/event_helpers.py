@@ -6,3 +6,9 @@ def EventHelper(Event) -> dict:
         "open_date": str(Event["open_date"]),
         "close_date": str(Event["close_date"])
     }
+
+
+def EventIdHelper(EventId) -> dict:
+    return{
+        "event_id": str(EventId["event_id"])
+    }
