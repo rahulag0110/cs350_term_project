@@ -62,39 +62,9 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
 import { UserContext } from "../Hooks/UserContext";
+import '../Styles/Login.css';
 
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#d9d9d9', //fckn pastel grey bro
-    },
-    title: {
-        color: '#5B6C87', // dis pastel blue, we can change all dese colors if they look like ass
-    },
-    input: {
-        margin: '10px 0',
-        padding: '10px',
-        width: '200px',
-        border: 'none',
-        borderRadius: '5px',
-        backgroundColor: '#f2f2f2', // pastel yellow
-    },
-    button: {
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        backgroundColor: '#FFABAB', // pastel red
-        color: 'white',
-        cursor: 'pointer',
-    },
-    link: {
-        color: '#89CFF0', // pastel blue
-    },
-};
+
 
 const Login = () => {
 
@@ -116,23 +86,23 @@ const Login = () => {
     }
 
     return (
-        <div style={styles.container}>
-            <h2 style={styles.title}>Login</h2>
+        <div className="container">
+            <h2 className="title">Login</h2>
             <input
-                style={styles.input}
+                className="input"
                 onChange={e => setEmail(e.target.value)}
                 placeholder='Email'
             />
             <input
-                style={styles.input}
+                className="input"
                 type="password"
                 onChange={e => setPassword(e.target.value)}
                 placeholder='Password'
             />
-            <button style={styles.button} onClick={loginHandler}>Log in</button>
+            <button className="button" onClick={loginHandler}>Log in</button>
             <h1>{status}</h1>
             <h1>{userId}</h1>
-            <Link to="/register" style={styles.link}>Register</Link>
+            <Link to="/register" className="link">Register</Link>
         </div>
     )
 }
