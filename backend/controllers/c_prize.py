@@ -1,7 +1,9 @@
 from models.prize_models import Prize
+from models.event_models import EventId
 from database import collection_prizes
 from bson.objectid import ObjectId
 from helpers.prize_helpers import * 
+from helpers.event_helpers import EventIdHelper
 
 
 async def add(prize: Prize):
@@ -21,9 +23,9 @@ async def delete(prize_id: str):
     return response_data
 
 
-async def get_all(event_id: str):
+async def get_all(event_id: EventId):
     prizes = []
-    async for prize in collection_prizes.find({"event_id": event_id}):
+    async for prize in collection_prizes.find({"event_id": EventIdHelper(event_id)["event_id"]}):
         prizes.append(PrizeHelper(prize))
     response_data = {"status": "SUCCESS", "prizes": prizes}
     return response_data

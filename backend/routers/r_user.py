@@ -24,9 +24,9 @@ async def user_deregister(user_id):
     return response
 
 
-@router.get("/created_events", summary="Fetch events created by a user")
-async def user_created_events(user_id):
-    response = await created_events(user_id)
+@router.post("/created_events", summary="Fetch events created by a user")
+async def user_created_events(user_id: UserId):
+    response = await created_events(user_id.dict())
     return response
 
 
