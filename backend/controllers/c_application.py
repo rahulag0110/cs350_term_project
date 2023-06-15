@@ -1,7 +1,9 @@
 from models.application_models import Application
+from models.event_models import EventId
 from database import collection_applications
 from bson.objectid import ObjectId
 from helpers.application_helpers import *
+from helpers.event_helpers import EventIdHelper
 
 
 async def apply_event(application: Application):
@@ -21,9 +23,9 @@ async def deregister(application_id: ObjectId):
     return response_data
 
 
-async def get_event_applications(event_id: ObjectId):
+async def get_event_applications(event_id: EventId):
     applications = []
-    async for application in collection_applications.find({"event_id": event_id}):
+    async for application in collection_applications.find({"event_id": EventIdHelper(event_id)["event_id"]}):
         applications.append(ApplicationHelper(application))
     response_data = {"status": "SUCCESS", "applications": applications}
     return response_data

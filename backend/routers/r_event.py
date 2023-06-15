@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models.event_models import Event
+from models.event_models import Event, EventId
 from controllers.c_event import *
 from controllers.c_prize import get_all
 
@@ -25,7 +25,7 @@ async def event_get_all():
     return response
 
 
-@router.get("/get_all_prizes", summary="Fetch all prizes for an event")
-async def event_get_all_prizes(event_id):
-    response = await get_all(event_id)
+@router.post("/get_all_prizes", summary="Fetch all prizes for an event")
+async def event_get_all_prizes(event_id: EventId):
+    response = await get_all(event_id.dict())
     return response

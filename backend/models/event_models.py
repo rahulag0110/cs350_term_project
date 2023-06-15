@@ -9,3 +9,7 @@ class Event(BaseModel):
     open_date: str
     close_date: str 
     # Todo change this to date
+
+
+class EventId(BaseModel):
+    event_id: str
