@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #d9d9d9;
+}
+
+.title {
+    color: #5B6C87
+}
+
+.input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFABAB;
+    color: white;
+    cursor: pointer;
+}
+
+.link {
+    color: #89CFF0;
+}

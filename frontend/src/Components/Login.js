@@ -29,7 +29,7 @@ const Login = () => {
                 setUser(loginUserId);
                 alert('login_success')
                 window.localStorage.setItem('current_user', loginUserId)
-                window.location.href="./"
+                window.location.href="./afterlogin"
             }
             else {
                 alert('login_fail')
@@ -43,7 +43,7 @@ const Login = () => {
 
     return (
         <div className="container">
-            <h1>user_in_context = {user}</h1>
+            {/* <h1>user_in_context = {user}</h1> */}
             <h2 className="title">Login</h2>
             <input
                 className="input"
@@ -59,7 +59,7 @@ const Login = () => {
             <button className="button" onClick={loginHandler}>Log in</button>
             <h1>{status}</h1>
             <Link to="/register" className="link">Register</Link>
-            <Link to="/" className="link">Home</Link>
+            {/* <Link to="/" className="link">Home</Link> */}
         </div>
     )
 }
