@@ -6,6 +6,12 @@ from controllers.c_user import *
 router = APIRouter(prefix="/user", tags=['User'])
 
 
+@router.post("/get_user", summary="Get user information")
+async def user_get_user(user_id):
+    response = await get_user(user_id)
+    return response
+
+
 @router.post("/register", summary="Register user")
 async def user_register(user: UserRegister):
     response = await register(user.dict())
