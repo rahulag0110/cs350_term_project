@@ -6,9 +6,9 @@ from helpers.event_helpers import EventHelper
 from helpers.application_helpers import ApplicationHelper
 
 
-async def get_user(user_id: str):
+async def get_user(user_id: UserId):
     us = []
-    async for usr in collection_users.find({"_id": ObjectId(user_id)}):
+    async for usr in collection_users.find({"_id": ObjectId(UserIdHelper(user_id)["user_id"])}):
         us.append(UserHelper(usr))
 
     if len(us) == 1:
