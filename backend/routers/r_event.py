@@ -5,7 +5,13 @@ from controllers.c_prize import get_all
 
 
 router = APIRouter(prefix="/event", tags=['Event'])
-                
+
+
+@router.post("/get_event", summary="Get event information")
+async def user_get_event(event_id: EventId):
+    response = await get_event(event_id.dict())
+    return response
+
 
 @router.post('/create', summary="Create an event")
 async def event_create(event: Event):
