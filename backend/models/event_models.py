@@ -8,6 +8,7 @@ class Event(BaseModel):
     name: str
     open_date: str
     close_date: str 
+    description: str
     # Todo change this to date
 
 
