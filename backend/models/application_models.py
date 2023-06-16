@@ -9,3 +9,4 @@ class Application(BaseModel):
     link: str
     image: str
     status: bool
+    name: str
