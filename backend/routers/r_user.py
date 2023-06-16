@@ -7,8 +7,8 @@ router = APIRouter(prefix="/user", tags=['User'])
 
 
 @router.post("/get_user", summary="Get user information")
-async def user_get_user(user_id):
-    response = await get_user(user_id)
+async def user_get_user(user_id: UserId):
+    response = await get_user(user_id.dict())
     return response
 
 
