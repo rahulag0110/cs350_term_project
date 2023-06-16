@@ -7,12 +7,15 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 import Event from './Components/Event';
 import { UserContext } from './Hooks/UserContext';
+import ShowEvents from './Components/ShowEvents';
+import HomeAfterLogin from './Components/HomeAfterLogin';
 
 
 
 
 function App() {
-  const [user, setUser] = useState('123');
+  // window.localStorage.setItem("current_user", 'no_user')
+  const [user, setUser] = useState('no_user');
   const value = useMemo(() => ({ user, setUser }), [user, setUser])
 
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/register' element={<Register />}/>
         <Route exact path='/events' element={<Event />}/>
+        <Route exact path='/showevents' element={<ShowEvents />}/>
+        <Route exact path='/afterlogin' element={<HomeAfterLogin />}/>
+        
         
       </Routes>
     </UserContext.Provider>
