@@ -72,7 +72,7 @@ const HomeAfterLogin = () => {
 
 
 
-        <div className="container">
+        <div className="homeafterlogin_container">
             <h1 className="title">EveryDraw</h1>
 
         <label>Search</label>
