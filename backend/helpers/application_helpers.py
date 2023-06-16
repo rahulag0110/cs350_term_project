@@ -5,5 +5,6 @@ def ApplicationHelper(Application) -> dict:
         "event_id": str(Application["event_id"]),
         "link": str(Application["link"]),
         "image": str(Application["image"]),
-        "status": str(Application["status"])
+        "status": str(Application["status"]),
+        "name": str(Application["name"])
     }
