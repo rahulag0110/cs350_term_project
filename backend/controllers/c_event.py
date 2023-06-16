@@ -1,7 +1,19 @@
-from models.event_models import Event
+from models.event_models import Event, EventId
 from database import collection_events
 from bson.objectid import ObjectId
 from helpers.event_helpers import *
+
+
+async def get_event(event_id: EventId):
+    ev = []
+    async for event in collection_events.find({"_id": ObjectId(EventIdHelper(event_id)["event_id"])}):
+        ev.append(EventHelper(event))
+
+    if len(ev) == 1:
+        response_data = {"status": "SUCCESS", "event": ev[0]}
+    else:
+        response_data = {"status": "FAIL", "msg": "Event does not exist"}
+    return response_data
 
 
 async def create(event: Event):
