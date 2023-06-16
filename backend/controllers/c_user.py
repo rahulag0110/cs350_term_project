@@ -6,6 +6,18 @@ from helpers.event_helpers import EventHelper
 from helpers.application_helpers import ApplicationHelper
 
 
+async def get_user(user_id: str):
+    us = []
+    async for usr in collection_users.find({"_id": ObjectId(user_id)}):
+        us.append(UserHelper(usr))
+
+    if len(us) == 1:
+        response_data = {"status": "SUCCESS", "user": us[0]}
+    else:
+        response_data = {"status": "FAIL", "msg": "User does not exist"}
+    return response_data
+
+
 async def register(user: UserRegister):
     user_in_db = await collection_users.find_one({"email": UserRegisterHelper(user)["email"]})
     if user_in_db:
