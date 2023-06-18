@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import Event from './Components/Event';
 import { UserContext } from './Hooks/UserContext';
-import ShowEvents from './Components/ShowEvents';
 import HomeAfterLogin from './Components/HomeAfterLogin';
+import UserProfile from './Components/UserProfile';
+import HostEvent from './Components/HostEvent';
+import HostedEventDetail from './Components/HostedEventDetail';
+import EventDetail from './Components/EventDetail';
 
 
 
@@ -26,9 +28,12 @@ function App() {
         <Route exact path='/' element={<Home />}/>
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/register' element={<Register />}/>
-        <Route exact path='/events' element={<Event />}/>
-        <Route exact path='/showevents' element={<ShowEvents />}/>
         <Route exact path='/afterlogin' element={<HomeAfterLogin />}/>
+        <Route exact path='/userprofile' element={<UserProfile />}/>
+        <Route exact path='/hostevent' element={<HostEvent />}/>
+        <Route exact path='/hostedeventdetail/:eventId' element={<HostedEventDetail />}/>
+        <Route exact path='/eventdetail/:eventId' element={<EventDetail />}/>
+
         
         
       </Routes>
