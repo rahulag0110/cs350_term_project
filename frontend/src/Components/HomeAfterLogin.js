@@ -26,14 +26,21 @@ const HomeAfterLogin = () => {
             setAllEvents(allevents)
         })
       }, []);
+
+    const logOutHandler = () => {
+        window.localStorage.setItem('current_user', 'no_user')
+        window.location.href="./"
+    }
     
 
 
 
-    return (
-
-        <>
-        
+    return (        
+        <h1>EveryDraw</h1>
+        <button onClick={logOutHandler}>Log Out</button>
+        <button onClick={take_to_user_profile}>User_Profile</button>
+        <button onClick={handleClick}>Host a Event</button>
+        main
         {/* <table>
             <thead>
                 <tr>

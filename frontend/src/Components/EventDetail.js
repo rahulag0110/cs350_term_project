@@ -7,6 +7,11 @@ const EventDetail = () => {
     const curr_user = window.localStorage.getItem("current_user")
     const [link, setLink] = useState()
     const [userName, setUserName] = useState()
+    const [eventName, setEventName] = useState();
+    const [eventDescription, setEventDescription] = useState();
+    const [eventOpenDate, setEventOpenDate] = useState();
+    const [eventCloseDate, setEventCloseDate] = useState();
+
 
     useEffect(() => {
         axios.post('http://127.0.0.1:8000/user/get_user', {'user_id': curr_user})
@@ -17,6 +22,28 @@ const EventDetail = () => {
             setUserName(user_name)
         })
       }, []);
+
+
+    useEffect(() => {
+    axios.post('http://127.0.0.1:8000/event/get_event', {'event_id': eventId})
+    .then(res => {
+        // console.log(res);
+        // console.log(res.data.event);
+        const event_name= res.data.event['name'];
+        setEventName(event_name);
+
+        const event_des = res.data.event['description'];
+        setEventDescription(event_des)
+        
+        const open_date = res.data.event['open_date'];
+        setEventOpenDate(open_date)
+
+        const close_date = res.data.event['close_date'];
+        setEventCloseDate(close_date)
+
+
+    })
+    }, []);
 
     const applyHandler = () => {
         axios.post('http://127.0.0.1:8000/application/apply',
@@ -47,7 +74,10 @@ const EventDetail = () => {
     return (
         <>
             <div>
-                {eventId}
+                <h1>Event Name : {eventName}</h1>
+                <h4>About: {eventDescription}</h4>
+                <h6>Open Date: {eventOpenDate}</h6>
+                <h6>Close Date: {eventCloseDate}</h6>
                 {/* {curr_user} */}
                 
             </div>
