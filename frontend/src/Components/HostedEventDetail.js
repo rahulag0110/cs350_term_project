@@ -52,13 +52,15 @@ const HostedEventDetail = () => {
                 ))}
             </div> */}
             <div>{eventName}</div>
+            <button>Add/Edit Prize</button>
+            <button>Draw Prizes</button>
 
             <div>
                 {/* {eventId} */}
                 {applications.map(application => (
                     <div key={application.event_id}>
                         <p>{application.name}</p>
-                        <button onClick>Approve</button>
+                        <button>Approve</button>
                     </div>
                 ))}
             </div>
