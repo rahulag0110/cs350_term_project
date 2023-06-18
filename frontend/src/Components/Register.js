@@ -12,7 +12,19 @@ const Register = () => {
 
     const registerHandler = () => {
         axios.post('http://127.0.0.1:8000/user/register', {'name':name, 'email': email, 'password': password})
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            const registerStatus = res.data['status']
+            if (registerStatus == 'SUCCESS') {
+                alert('register_success')
+                // window.localStorage.setItem('current_user', loginUserId)
+                window.location.href="./login"
+            }
+            else {
+                alert('register_fail')
+            }
+
+        });
     }
 
     return (
