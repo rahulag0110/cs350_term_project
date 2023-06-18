@@ -33,9 +33,7 @@ const HomeAfterLogin = () => {
     return (
 
         <>
-        <h1>EveryDraw</h1>
-        <button onClick={take_to_user_profile}>User_Profile</button>
-        <button onClick={handleClick}>Host a Event</button>
+        
         {/* <table>
             <thead>
                 <tr>
@@ -55,7 +53,22 @@ const HomeAfterLogin = () => {
             ))}
             </tbody>
         </table> */}
-        <div>
+        <link rel="stylesheet" href="https://maxcdn.boostrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
+        <ul className="homeafterlogin_container">
+            <div id="homeafterlogin_buttonholder">
+                <h1>Hi</h1>
+                <button className="homeafterlogin_userprofile" onClick={take_to_user_profile}></button>
+                <button className="homeafterlogin_host" onClick={handleClick}>Host an Event</button>    
+            </div>
+
+            <div className="logo"></div>
+
+            <h1 className="homeafterlogin_title">EveryDraw</h1>
+            
+            
+            <label>Search</label>
+            <input type="text" onChange={e => setQuery(e.target.value)}></input>
+
         {allEvents.map(event => (
                 <div key={event._id}>
                     {/* <p>{event.name}</p> */}
@@ -66,20 +79,8 @@ const HomeAfterLogin = () => {
                 </div>
             ))
             }
-        </div>
+        </ul>
 
-        
-
-
-
-        <div className="homeafterlogin_container">
-            <h1 className="title">EveryDraw</h1>
-
-        <label>Search</label>
-        <input type="text" onChange={e => setQuery(e.target.value)}></input>
-
-        
-        </div>
         </>
     )
 }
