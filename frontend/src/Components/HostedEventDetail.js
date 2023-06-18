@@ -8,8 +8,13 @@ const HostedEventDetail = () => {
     const curr_user = window.localStorage.getItem("current_user")
 
     const [applications, setApplications] = useState([]);
-    const [event, setEvent] = useState([]);
-    var event_name = ''
+    const [event, setEvent] = useState();
+    var event_name = '123'
+    const [eventName, setEventName] = useState();
+
+    // const approveHandler = () => {
+    //     axios.
+    // }
 
     useEffect(() => {
         axios.post('http://127.0.0.1:8000/application/event_applications', {'event_id': eventId})
@@ -17,10 +22,13 @@ const HostedEventDetail = () => {
             // console.log(res);
             // console.log(res.data.applications);
             const all_applications = res.data['applications'];
+            console.log(all_applications)
             setApplications(all_applications)
-            // console.log(applications)
+            console.log(applications)
         })
       }, []);
+
+
 
       useEffect(() => {
         axios.post('http://127.0.0.1:8000/event/get_event', {'event_id': eventId})
@@ -29,9 +37,8 @@ const HostedEventDetail = () => {
             // console.log(res.data.event);
             const event_info = res.data['event'];
             event_name = res.data.event['name'];
-            console.log(event_info)
-            setEvent(event_info)
-            console.log(event)
+            setEventName(event_name)
+            setEvent(event_info);
         })
       }, []);
 
@@ -44,12 +51,14 @@ const HostedEventDetail = () => {
                     </div>
                 ))}
             </div> */}
-            <div>{event_name}</div>
+            <div>{eventName}</div>
+
             <div>
-                {eventId}
+                {/* {eventId} */}
                 {applications.map(application => (
                     <div key={application.event_id}>
-                        <p>{application.participant_id}</p>
+                        <p>{application.name}</p>
+                        <button onClick>Approve</button>
                     </div>
                 ))}
             </div>
