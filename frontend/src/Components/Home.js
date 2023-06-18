@@ -9,11 +9,12 @@ const Home = () => {
     console.log(user)
 
     return (
-        <div className="container">
+        <div className="home_container">
+            <div className="logo"></div>
             <h1>Welcome to EveryDraw</h1>
-            <Link to="/login" className="link">Login</Link>
+            <Link to="/login" className="home_link_login">Login</Link>
             <p></p>
-            <Link to="/register" className="link">Register</Link>
+            <Link to="/register" className="home_link_register">Register</Link>
 
         </div>
     )
