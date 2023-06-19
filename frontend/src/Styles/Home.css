@@ -8,6 +8,11 @@
     background-color: #FAFAC8;
 }
 
+.home_title {
+    position: absolute;
+    padding-top: 70px;
+}
+
 .home_banner {
     background-color: #5B6C87;
     color: white;
