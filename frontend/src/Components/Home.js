@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <div className="home_container">
             <div className="logo"></div>
-            <h1>Welcome to EveryDraw</h1>
+            <h1 className="home_title">Welcome to EveryDraw</h1>
             <Link to="/login" className="home_link_login">Login</Link>
             <p></p>
             <Link to="/register" className="home_link_register">Register</Link>
