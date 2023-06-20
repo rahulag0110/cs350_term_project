@@ -1,0 +1,22 @@
+.-input-label {
+    font-family:  'Merriweather', sans-serif;
+    font-size: 1rem;
+}
+
+
+.-hostinput {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+}
+
+
+textarea.-hostinput {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    height: 8rem;
+}
+
+.-hostform-container {
+    padding-top: 8rem;
+    padding-bottom: 12rem;
+}

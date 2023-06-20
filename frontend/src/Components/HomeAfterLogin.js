@@ -6,6 +6,12 @@ import { UserContext } from "../Hooks/UserContext";
 import { useContext, useState, useEffect } from "react";
 import "../Styles/HomeAfterLogin.css"
 
+import logo_black_src from '../assets/logo_black.png';
+import logo_white_src from '../assets/logo_white.png';
+import trophy_src from '../assets/trophy.png';
+import prize_src from '../assets/prize_3.png';
+import profile_src from '../assets/user_profile.png';
+
 
 const HomeAfterLogin = () => {
 
@@ -16,6 +22,7 @@ const HomeAfterLogin = () => {
     const [click, setClick] = useState(false);
     const handleClick = () => window.location.href="./hostevent";
     const take_to_user_profile = () => window.location.href="./userprofile"
+    
     const [allEvents, setAllEvents] = useState([])
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/event/get_all', {})
@@ -34,62 +41,69 @@ const HomeAfterLogin = () => {
     
 
 
+return (
 
-    return (     
-        <>   
-        <h1>EveryDraw</h1>
-        <button onClick={logOutHandler}>Log Out</button>
-        <button onClick={take_to_user_profile}>User_Profile</button>
-        <button onClick={handleClick}>Host a Event</button>
-        main
-        {/* <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Open Date</th>
-                    <th>Close Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            {allEvents.map(event => (
-
-                <tr key={event._id}>
-                    <td>{event.name}</td>
-                    <td>{event.open_date}</td>
-                    <td>{event.close_date}</td>
-                </tr>
-            ))}
-            </tbody>
-        </table> */}
-        <link rel="stylesheet" href="https://maxcdn.boostrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
-        <ul className="homeafterlogin_container">
-            <div id="homeafterlogin_buttonholder">
-                <h1>Hi</h1>
-                <button className="homeafterlogin_userprofile" onClick={take_to_user_profile}></button>
-                <button className="homeafterlogin_host" onClick={handleClick}>Host an Event</button>    
-            </div>
-
-            <div className="logo"></div>
-
-            <h1 className="homeafterlogin_title">EveryDraw</h1>
-            
-            
-            <label>Search</label>
-            <input type="text" onChange={e => setQuery(e.target.value)}></input>
-
-        {allEvents.map(event => (
-                <div key={event._id}>
-                    {/* <p>{event.name}</p> */}
-                    <Link to={`/eventdetail/${event._id}`}>
-                        <button>{event.name} , {event.open_date} , {event.close_date}</button>
-                    </Link>
-
+        <main>
+            <div className="container h-100    -container">
+                <div className="row    -bar">
+                    <div className="col-6 d-flex align-items-center">
+                        <Link to='/afterlogin'>
+                            <img className="    -logo-img" src={logo_black_src} alt="Logo"></img>
+                        </Link>
+                        {/* <Link to="/register" className="p-2    -yellow-link">Register</Link> */}
+                    </div>
+                    
+                    <div className="col-6 d-flex flex-row align-items-center justify-content-end">
+                        <button className="btn    -login-button" onClick={handleClick}>Host</button>
+                        <button className="btn    -register-button" onClick={logOutHandler}>Logout</button>
+                        <button className="btn    -register-button" onClick={take_to_user_profile}>
+                            <img src={profile_src} className="    -profile-img"></img>
+                        </button>
+                    </div>
                 </div>
-            ))
-            }
-        </ul>
 
-        </>
+                <div className="   -search-container">
+
+                    <div className="d-flex flex-row align-items-center justify-content-center">
+                            <input className="form-control-plaintext p-3    -searchbar" type="text" onChange={e => setQuery(e.target.value)} placeholder='Search...'></input>
+                    </div>
+                </div>
+
+                <div className="    -events-container">
+                    {allEvents.map(event => (
+                        <div key={event._id}>
+                            {/* <p>{event.name}</p> */}
+                            <Link to={`/eventdetail/${event._id}`}>
+                                <button className="w-100 text-start btn    -eventholder">
+                                    <div className="d-flex flex-row justify-content-between">
+                                        <span>:: {event.name}</span>
+                                        <span>{event.open_date} ~ {event.close_date}</span>
+                                    </div>
+                                    
+                                </button>
+                            </Link>
+
+                        </div>
+                    ))}
+                </div>
+                
+
+                <div className="    -footer">
+                    <div className="row    -footer-above">
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">About</Link></div>
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">Legal Terms</Link></div>
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">Privacy Policy</Link></div>
+                    </div>
+
+                    <div className="d-flex flex-column align-items-center    -footer-below">
+                        <img className="d-block    -logo-img" src={logo_white_src} alt="Logo"></img>
+                        <p className="    -footer-copyright">Copyright EVERYDRAW, Inc. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+            
     )
 }
 
