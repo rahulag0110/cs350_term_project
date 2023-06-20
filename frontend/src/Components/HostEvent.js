@@ -27,6 +27,7 @@ const HostEvent = () => {
     }
 
     const createEventHandler = () => {
+
         axios.post('http://127.0.0.1:8000/event/create',
         {"host_id": curr_user,
         "name": eventName,
@@ -39,12 +40,13 @@ const HostEvent = () => {
             const creationStatus = res.data['status']
             if (creationStatus == 'SUCCESS') {
                 alert('Event_Created')
+                window.location.href="./afterlogin"
             }
             else {
                 alert('fail')
             }
         })
-        window.location.href="./afterlogin"
+        
     }
 
     return (
@@ -52,7 +54,7 @@ const HostEvent = () => {
             <div className="container h-100    -container">
                 <div className="row    -bar">
                     <div className="col-6 d-flex align-items-center">
-                        <Link to='/'>
+                        <Link to='/afterlogin'>
                             <img className="    -logo-img" src={logo_black_src} alt="Logo"></img>
                         </Link>
                         {/* <Link to="/register" className="p-2    -yellow-link">Register</Link> */}
@@ -75,7 +77,7 @@ const HostEvent = () => {
 
                         </div>
                         <div className="col-11">
-                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => e} placeholder='Friday Festa...'></input>
+                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => setEventName(e.target.value)} placeholder='Friday Festa...'></input>
 
                         </div>
                     </div>
@@ -86,7 +88,7 @@ const HostEvent = () => {
 
                         </div>
                         <div className="col-11">
-                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => e} placeholder='2/30/2023'></input>
+                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => setOpenDate(e.target.value)} placeholder='2/30/2023'></input>
 
                         </div>
                     </div>
@@ -97,7 +99,7 @@ const HostEvent = () => {
 
                         </div>
                         <div className="col-11">
-                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => e} placeholder='4/31/2023'></input>
+                                                    <input className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => setCloseDate(e.target.value)} placeholder='4/31/2023'></input>
 
                         </div>
                     </div>
@@ -108,7 +110,7 @@ const HostEvent = () => {
 
                         </div>
                         <div className="col-11">
-                                                    <textarea className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => e}
+                                                    <textarea className="form-control-plaintext p-3    -hostinput" type="text" onChange={e => setDescription(e.target.value)}
                                                     placeholder='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'></textarea>
 
                         </div>
