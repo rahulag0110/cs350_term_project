@@ -1,19 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
 
+import { UserContext } from './Hooks/UserContext';
 import Register from './Components/Register';
 import Login from './Components/Login';
-import Home from './Components/Home';
-import { UserContext } from './Hooks/UserContext';
 import HomeAfterLogin from './Components/HomeAfterLogin';
+import Home from './Components/Home';
 import UserProfile from './Components/UserProfile';
 import HostEvent from './Components/HostEvent';
 import HostedEventDetail from './Components/HostedEventDetail';
 import EventDetail from './Components/EventDetail';
-
-
-
 
 function App() {
   // window.localStorage.setItem("current_user", 'no_user')
