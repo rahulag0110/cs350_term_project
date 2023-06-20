@@ -11,6 +11,7 @@ import UserProfile from './Components/UserProfile';
 import HostEvent from './Components/HostEvent';
 import HostedEventDetail from './Components/HostedEventDetail';
 import EventDetail from './Components/EventDetail';
+import ParticipatedEventDetail from './Components/ParticipatedEventDetail';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route exact path='/userprofile' element={<UserProfile />}/>
         <Route exact path='/hostevent' element={<HostEvent />}/>
         <Route exact path='/hostedeventdetail/:eventId' element={<HostedEventDetail />}/>
+        <Route exact path='/participatedeventdetail/:eventId' element={<ParticipatedEventDetail />}/>
         <Route exact path='/eventdetail/:eventId' element={<EventDetail />}/>
 
         
