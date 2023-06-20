@@ -1,4 +1,4 @@
-from models.prize_models import Prize
+from models.prize_models import Prize, PrizeId
 from models.event_models import EventId
 from database import collection_prizes
 from bson.objectid import ObjectId
@@ -17,8 +17,8 @@ async def add(prize: Prize):
     return response_data
     
 
-async def delete(prize_id: str):
-    await collection_prizes.delete_one({"_id": ObjectId(prize_id)})
+async def delete(prize_id: PrizeId):
+    await collection_prizes.delete_one({"_id": PrizeIdHelper(prize_id)["prize_id"]})
     response_data = {"status": "SUCCESS"}
     return response_data
 

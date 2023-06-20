@@ -7,6 +7,19 @@ from helpers.event_helpers import EventIdHelper
 
 
 async def apply_event(application: Application):
+
+    ex_ev = []
+    existen_app = await collection_applications.find_one({"participant_id": ApplicationHelper(application)["participant_id"], "event_id": ApplicationHelper(application)["event_id"]})
+    # async for existent_event in collection_applications.find_one({, }):
+    #     ex_ev.append(existent_event)
+    # if len(ex_ev) != 0:
+        # response_data = {"status": "FAIL", "msg": "You cannot apply more than once"}
+        # return response_data
+    if existen_app:
+        response_data = {"status": "FAIL", "msg": "You cannot apply more than once"}
+        return response_data
+
+
     result = await collection_applications.insert_one(application)
     if result:
         completed_application = await collection_applications.find_one(application)

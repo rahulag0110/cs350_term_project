@@ -13,3 +13,9 @@ def TempPrizeHelper(Prize) -> dict:
         "prize_name": str(Prize["prize_name"]),
         "claim_info": str(Prize["claim_info"])
     }
+
+
+def PrizeIdHelper(PrizeId) -> dict:
+    return{
+        "prize_id": str(PrizeId["prize_id"])
+    }
