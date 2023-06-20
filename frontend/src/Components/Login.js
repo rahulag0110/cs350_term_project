@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { UserContext } from "../Hooks/UserContext";
 import '../Styles/Login.css';
 
+import logo_black_src from '../assets/logo_black.png';
+import logo_white_src from '../assets/logo_white.png';
+import trophy_src from '../assets/trophy.png';
+import prize_src from '../assets/prize_3.png'
 
 
 const Login = () => {
@@ -42,26 +46,60 @@ const Login = () => {
     }
 
     return (
-        <div className="login_container">
-            <div className="logo"></div>
-            {/* <h1>user_in_context = {user}</h1> */}
-            <h2 className="login_title">Login</h2>
-            <input
-                className="login_input"
-                onChange={e => setEmail(e.target.value)}
-                placeholder='Email'
-            />
-            <input
-                className="login_input"
-                type="password"
-                onChange={e => setPassword(e.target.value)}
-                placeholder='Password'
-            />
-            <button className="login_button" onClick={loginHandler}>Log in</button>
-            <h1>{status}</h1>
-            <Link to="/register" className="login_link">Register</Link>
-            {/* <Link to="/" className="link">Home</Link> */}
-        </div>
+        <main>
+            <div className="container-fluid h-100    -container">
+                <div className="row    -bar">
+                    <div className="col-6 d-flex align-items-center">
+                        <Link to='/'>
+                            <img className="    -logo-img" src={logo_black_src} alt="Logo"></img>
+                        </Link>
+                        {/* <Link to="/register" className="p-2    -yellow-link">Register</Link> */}
+                    </div>
+                    
+                    {/* <div className="col-6 d-flex flex-row align-items-center justify-content-end">
+                        <Link to="/login" className="    -white-link">Login</Link>
+                        
+                    </div> */}
+                </div>
+
+                <div className="row   -login-container">
+                    <div className="col-4 mx-auto    -login">
+                        <input
+                            className="form-control form-control m-3 p-3    -input"
+                            onChange={e => setEmail(e.target.value)}
+                            placeholder='Email'
+                        />
+                        <input
+                            className="form-control form-control m-3 p-3    -input"
+                            type="password"
+                            onChange={e => setPassword(e.target.value)}
+                            placeholder='Password'
+                        />
+
+                        <div className="d-flex flex-row align-items-center justify-content-center pt-3    ">
+                            <Link to="/register" className="    -register-link">
+                                <button className="btn    -register-button">Register</button></Link>
+                            <button className="btn ms-3    -login-button" onClick={loginHandler}>Login</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div className="    -footer">
+                    <div className="row    -footer-above">
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">About</Link></div>
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">Legal Terms</Link></div>
+                        <div className="col-4 d-flex"><Link className="mx-auto    -footer-link">Privacy Policy</Link></div>
+                    </div>
+
+                    <div className="d-flex flex-column align-items-center    -footer-below">
+                        <img className="d-block    -logo-img" src={logo_white_src} alt="Logo"></img>
+                        <p className="    -footer-copyright">Copyright EVERYDRAW, Inc. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     )
 }
 
