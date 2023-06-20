@@ -41,9 +41,7 @@ const HomeAfterLogin = () => {
     
 
 
-
-    return (   
-            
+return (
 
         <main>
             <div className="container h-100    -container">
@@ -110,34 +108,3 @@ const HomeAfterLogin = () => {
 }
 
 export default HomeAfterLogin;
-
-
-
-/*
-
-<div className="homeafterlogin_container">
-                <div id="homeafterlogin_buttonholder">
-                    <button className="homeafterlogin_userprofile" onClick={take_to_user_profile}></button>
-                    <button className="homeafterlogin_host" onClick={handleClick}>Host an Event</button> 
-                    <button onClick={logOutHandler}>Log Out</button>   
-                </div>
-
-                <div className="logo"></div>
-
-                <h1 className="homeafterlogin_title">EveryDraw</h1>
-                
-                
-                <label>Search</label>
-                <input type="text" onChange={e => setQuery(e.target.value)}></input> */
-
-            // {allEvents.map(event => (
-            //         <div key={event._id}>
-            //             {/* <p>{event.name}</p> */}
-            //             <Link to={`/eventdetail/${event._id}`}>
-            //                 <button>{event.name} , {event.open_date} , {event.close_date}</button>
-            //             </Link>
-
-            //         </div>
-            //     ))
-            //     }
-
