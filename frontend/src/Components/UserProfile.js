@@ -62,7 +62,9 @@ const UserProfile = () => {
             <h3>Events you are participaing in:</h3>
             {participaingEvents.map(event => (
                 <div key={event._id}>
-                    <p>{event.name}</p>
+                    <Link to={`/participatedeventdetail/${event._id}`}>
+                        <button>{event.name}</button>
+                    </Link>
                     
 
                 </div>
