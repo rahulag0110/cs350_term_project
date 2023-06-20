@@ -1,0 +1,19 @@
+.-profile-greeting-container {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.-profile-header {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+}
+
+
+.-participated-container {
+    padding-bottom: 4rem;
+}
+
+
+.-created-container {
+    padding-bottom: 12rem;
+}

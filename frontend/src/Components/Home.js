@@ -1,6 +1,5 @@
 import { UserContext } from "../Hooks/UserContext";
 import { useContext, useState } from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../Styles/Home.css"
 
@@ -15,7 +14,7 @@ const Home = () => {
 
     return (
         <main>
-            <div className="container-fluid h-100    -container">
+            <div className="container h-100    -container">
                 <div className="row    -bar">
                     <div className="col-6 d-flex align-items-center">
                         <img className="    -logo-img" src={logo_black_src} alt="Logo"></img>
@@ -35,12 +34,13 @@ const Home = () => {
                             <div className="    -main-left-header-container">
                                 <h1 className="    -main-left-header">Hello.</h1>
                                 <h1 className="    -main-left-header">Welcome to <strong className="    -main-left-header-strong">Everydraw</strong>.</h1>
+                                
                                 {/* <h1 className="    -main-left-header"><strong>Everydraw.</strong></h1> */}
                             </div>
                             
                             <div className="    -main-left-p-container">
-                                <p className="    -main-left-p">Everyone wins.</p>
-                                <p className="    -main-left-p">Prize for only one.</p>
+                                <p className="    -main-left-p">Everyone hosts. Everyone participates.</p>
+                                <p className="    -main-left-p">And everyone <strong className="    -main-left-header-strong">wins</strong>.</p>
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@ const Home = () => {
                                     <p className="    -quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer    -quote-footer">
-                                    <span className="    -quote-footer">Rahul, 2022</span>
+                                    <span className="    -quote-footer">YoonSu, 2022</span>
                                 </figcaption>
                             </figure>
                         </div>

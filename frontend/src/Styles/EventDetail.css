@@ -1,0 +1,22 @@
+.-event-container {
+    padding-bottom: 12rem;
+}
+
+
+.-event-title-container {
+    padding-top: 8rem;
+}
+
+.-eventdetail-eventname {
+    font-family: 'Merriweather', sans-serif;
+    font-size: 4rem;
+}
+
+.-event-description-container {
+    padding-top: 4rem;
+}
+
+.-eventdetail-description {
+    font-family: 'Merriweather', sans-serif;
+    font-size: 2rem;
+}
