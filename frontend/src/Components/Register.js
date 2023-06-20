@@ -36,7 +36,7 @@ const Register = () => {
     return (
 
         <main>
-            <div className="container-fluid h-100    -container">
+            <div className="container h-100    -container">
                 <div className="row    -bar">
                     <div className="col-6 d-flex align-items-center">
                         <Link to='/'>

@@ -6,7 +6,6 @@
 }
 
 main {
-    margin: 0rem 6rem;
     height: 100vh;
     background-color: #FFFFFF;
 }
@@ -55,8 +54,8 @@ main {
 }
 
 .-main-left {
-    padding-top: 16rem;
-    padding-bottom: 20rem;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
 }
 
 .-main-left-header-container {
@@ -81,15 +80,14 @@ main {
 
 .-main-right-trophy-img {
     position: absolute;
-    top: 10rem;
-    right: 1rem;
+    top: 8rem;
     height: 52rem;
 }
 
 .-quote-container {
     position: relative;
     padding: 2rem;
-    margin-bottom: 8rem;
+    margin-bottom: 12rem;
     background-color: #FFE680;
     /* box-shadow: 3px 3px 5px 6px #ccc; */
 }
@@ -106,7 +104,8 @@ main {
 }
 
 .-secondary-container {
-    
+    margin-bottom: 16rem;
+
 }
 
 .-secondary-prize-img {
@@ -118,7 +117,6 @@ main {
 }
 
 .-footer-above {
-    padding-top: 16rem;
     padding-bottom: 4rem;
 }
 
