@@ -91,7 +91,7 @@ const EventDetail = () => {
             <div className="container h-100    -container">
                 <div className="row    -bar">
                     <div className="col-6 d-flex align-items-center">
-                        <Link to='/'>
+                        <Link to='/afterlogin'>
                             <img className="    -logo-img" src={logo_black_src} alt="Logo"></img>
                         </Link>
                     </div>
