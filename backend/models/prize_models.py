@@ -8,3 +8,7 @@ class Prize(BaseModel):
     prize_rank: int
     prize_name: str
     claim_info: str
+
+
+class PrizeId(BaseModel):
+    prize_id: str

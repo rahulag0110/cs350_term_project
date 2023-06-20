@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models.prize_models import Prize
+from models.prize_models import Prize, PrizeId
 from controllers.c_prize import *
 
 
@@ -13,6 +13,6 @@ async def add_prize(prize: Prize):
 
 
 @router.delete("/delete", summary="Delete a prize")
-async def delete_prize(prize_id):
-    response = await delete(prize_id)
+async def delete_prize(prize_id: PrizeId):
+    response = await delete(prize_id.dict())
     return response
