@@ -19,12 +19,50 @@ const HostedEventDetail = () => {
     var event_name = '123'
     const [eventName, setEventName] = useState();
 
+    const [prizeName, setPrizeName] = useState();
+    const [claimInfo, setClaimInfo] = useState();
+
     const handleClick = () => window.location.href="./hostevent";
     const take_to_user_profile = () => window.location.href="./userprofile"
 
     const logOutHandler = () => {
         window.localStorage.setItem('current_user', 'no_user')
-        window.location.href="./"
+        window.location.href="http://localhost:3000/"
+    }
+
+    const drawPrizeHandler = () => {
+        axios.post('http://127.0.0.1:8000/winner/select', {'event_id':eventId})
+        .then(res => {
+            console.log(res)
+            // const registerStatus = res.data['status']
+            // if (registerStatus == 'SUCCESS') {
+            //     alert('Prize Added')
+            //     // window.localStorage.setItem('current_user', loginUserId)
+            //     // window.location.href="./login"
+            // }
+            // else {
+            //     alert('Prize Add Fail')
+            // }
+
+        });
+
+    }
+
+    const addPrizeHandler = () => {
+        axios.post('http://127.0.0.1:8000/prize/add', {'event_id':eventId, 'prize_rank': 0, 'prize_name': prizeName, 'claim_info': claimInfo})
+        .then(res => {
+            console.log(res)
+            const registerStatus = res.data['status']
+            if (registerStatus == 'SUCCESS') {
+                alert('Prize Added')
+                // window.localStorage.setItem('current_user', loginUserId)
+                // window.location.href="./login"
+            }
+            else {
+                alert('Prize Add Fail')
+            }
+
+        });
     }
 
     // const approveHandler = () => {
@@ -82,11 +120,20 @@ const HostedEventDetail = () => {
                     </div>
 
                     <div className="d-flex flex-row justify-content-start pt-4">
-                        <button className="btn    -login-button">Add/Edit Prize</button>
+                        <input
+                            onChange={e => setPrizeName(e.target.value)}
+                            placeholder="Prize Name"
+                        />
+                        <input
+                            onChange={e => setClaimInfo(e.target.value)}
+                            placeholder="Prize Claim Information"
+                        />
+                        <button className="btn    -login-button" onClick={addPrizeHandler}>Add Prize</button>
+                        
                     </div>
                     <div className="d-flex flex-row justify-content-start pt-4">
                         
-                        <button className="btn    -login-button">Draw Prizes</button>
+                        <button className="btn    -login-button" onClick={drawPrizeHandler}>Draw Prizes</button>
                     </div>
 
                     <div>

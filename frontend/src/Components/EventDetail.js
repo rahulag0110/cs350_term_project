@@ -25,7 +25,7 @@ const EventDetail = () => {
 
     const logOutHandler = () => {
         window.localStorage.setItem('current_user', 'no_user')
-        window.location.href="./"
+        window.location.href="http://localhost:3000/"
     }
 
     useEffect(() => {
