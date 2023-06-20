@@ -35,7 +35,8 @@ const HomeAfterLogin = () => {
 
 
 
-    return (        
+    return (     
+        <>   
         <h1>EveryDraw</h1>
         <button onClick={logOutHandler}>Log Out</button>
         <button onClick={take_to_user_profile}>User_Profile</button>
